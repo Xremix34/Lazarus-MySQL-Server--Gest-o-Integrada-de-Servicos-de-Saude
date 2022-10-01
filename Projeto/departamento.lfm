@@ -1,0 +1,138 @@
+object fmDepartamento: TfmDepartamento
+  Left = 480
+  Height = 453
+  Top = 329
+  Width = 579
+  Caption = 'Novo Departamento'
+  ClientHeight = 453
+  ClientWidth = 579
+  DesignTimePPI = 168
+  OnCreate = FormCreate
+  LCLVersion = '2.0.0.4'
+  object Label1: TLabel
+    Left = 34
+    Height = 30
+    Top = 44
+    Width = 95
+    Caption = 'DepNome'
+    ParentColor = False
+    ParentFont = False
+    OnClick = Label1Click
+  end
+  object Label2: TLabel
+    Left = 58
+    Height = 30
+    Top = 134
+    Width = 75
+    Caption = 'DepCod'
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 68
+    Height = 30
+    Top = 224
+    Width = 75
+    Caption = 'ChefeID'
+    ParentColor = False
+    ParentFont = False
+  end
+  object edCodDep: TEdit
+    Left = 160
+    Height = 38
+    Top = 40
+    Width = 226
+    Anchors = [akTop, akLeft, akRight]
+    OnChange = edCodDepChange
+    ParentFont = False
+    TabOrder = 0
+  end
+  object edDepNome: TEdit
+    Left = 160
+    Height = 38
+    Top = 130
+    Width = 394
+    Anchors = [akTop, akLeft, akRight]
+    ParentFont = False
+    TabOrder = 1
+  end
+  object edChefeID: TEdit
+    Left = 160
+    Height = 38
+    Top = 218
+    Width = 220
+    Anchors = [akTop, akLeft, akRight]
+    ParentFont = False
+    TabOrder = 2
+  end
+  object Button1: TButton
+    Left = 34
+    Height = 43
+    Top = 302
+    Width = 132
+    Caption = 'Inserir'
+    ModalResult = 1
+    OnClick = Button1Click
+    ParentFont = False
+    TabOrder = 3
+  end
+  object Button2: TButton
+    Left = 212
+    Height = 42
+    Top = 302
+    Width = 98
+    Caption = 'Cancel'
+    ModalResult = 2
+    OnClick = Button2Click
+    ParentFont = False
+    TabOrder = 4
+  end
+  object MSSQLConnectionDepartamento: TMSSQLConnection
+    Connected = True
+    LoginPrompt = True
+    DatabaseName = 'Escola'
+    KeepConnection = False
+    Password = '198721'
+    Transaction = SQLTransactionDepartamento
+    UserName = 'sa'
+    HostName = 'DESKTOP-BPMFLOL\SQLEXPRESS'
+    left = 78
+    top = 370
+  end
+  object SQLTransactionDepartamento: TSQLTransaction
+    Active = True
+    Database = MSSQLConnectionDepartamento
+    left = 248
+    top = 368
+  end
+  object SQLQueryDepartamento: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'DepNum'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'Nome'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'Local'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end>
+    Active = True
+    Database = MSSQLConnectionDepartamento
+    Transaction = SQLTransactionDepartamento
+    SQL.Strings = (
+      'select * from departamento'
+    )
+    Params = <>
+    left = 404
+    top = 370
+  end
+end

@@ -1,0 +1,151 @@
+object Proj: TProj
+  Left = 524
+  Height = 529
+  Top = 218
+  Width = 608
+  Caption = 'Novo Curso'
+  ClientHeight = 529
+  ClientWidth = 608
+  DesignTimePPI = 168
+  LCLVersion = '2.0.0.4'
+  object Label1: TLabel
+    Left = 37
+    Height = 30
+    Top = 56
+    Width = 74
+    Caption = 'CursoID'
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 37
+    Height = 30
+    Top = 112
+    Width = 75
+    Caption = 'DepCod'
+    ParentColor = False
+    ParentFont = False
+    OnClick = Label2Click
+  end
+  object Label3: TLabel
+    Left = 37
+    Height = 30
+    Top = 168
+    Width = 116
+    Caption = 'Nome Curso'
+    ParentColor = False
+    ParentFont = False
+  end
+  object Button1: TButton
+    Left = 252
+    Height = 44
+    Top = 456
+    Width = 132
+    Caption = 'Inserir'
+    ModalResult = 1
+    OnClick = Button1Click
+    ParentFont = False
+    TabOrder = 0
+  end
+  object Button2: TButton
+    Left = 401
+    Height = 44
+    Top = 456
+    Width = 132
+    Caption = 'Cancelar'
+    OnClick = Button2Click
+    ParentFont = False
+    TabOrder = 1
+  end
+  object edCurso: TEdit
+    Left = 159
+    Height = 38
+    Top = 56
+    Width = 149
+    ParentFont = False
+    TabOrder = 2
+  end
+  object edDepCod: TEdit
+    Left = 159
+    Height = 38
+    Top = 112
+    Width = 317
+    ParentFont = False
+    TabOrder = 3
+  end
+  object edNomeCurso: TEdit
+    Left = 159
+    Height = 38
+    Top = 168
+    Width = 149
+    ParentFont = False
+    TabOrder = 4
+  end
+  object Label4: TLabel
+    Left = 37
+    Height = 30
+    Top = 280
+    Width = 113
+    Caption = 'ID Professor'
+    ParentColor = False
+    ParentFont = False
+  end
+  object edIDProfessor: TEdit
+    Left = 159
+    Height = 38
+    Top = 280
+    Width = 149
+    ParentFont = False
+    TabOrder = 5
+  end
+  object edHorario: TEdit
+    Left = 159
+    Height = 38
+    Top = 224
+    Width = 317
+    ParentFont = False
+    TabOrder = 6
+  end
+  object Label5: TLabel
+    Left = 37
+    Height = 30
+    Top = 224
+    Width = 69
+    Caption = 'Horário'
+    ParentColor = False
+    ParentFont = False
+    OnClick = Label2Click
+  end
+  object MSSQLConnection1: TMSSQLConnection
+    Connected = True
+    LoginPrompt = True
+    AfterConnect = MSSQLConnection1AfterConnect
+    DatabaseName = 'Escola'
+    KeepConnection = False
+    Password = '198721'
+    Transaction = SQLTransaction1
+    UserName = 'sa'
+    HostName = 'DESKTOP-BPMFLOL\SQLEXPRESS'
+    left = 75
+    top = 344
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Database = MSSQLConnection1
+    left = 261
+    top = 344
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Database = MSSQLConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'select *'
+      'from Curso'
+      'Order by NomeCurso Asc'
+    )
+    Params = <>
+    left = 411
+    top = 344
+  end
+end

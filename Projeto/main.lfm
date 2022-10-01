@@ -1,0 +1,399 @@
+object fmMainForm: TfmMainForm
+  Left = 134
+  Height = 1045
+  Top = 0
+  Width = 1752
+  Caption = 'Ex1'
+  ClientHeight = 1011
+  ClientWidth = 1752
+  Color = clWindow
+  DesignTimePPI = 168
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  LCLVersion = '2.0.0.4'
+  object Button1: TButton
+    Left = 1508
+    Height = 56
+    Top = 34
+    Width = 220
+    Anchors = [akTop, akRight]
+    Caption = 'Novo Departamento'
+    OnClick = Button1Click
+    ParentFont = False
+    TabOrder = 0
+  end
+  object Button2: TButton
+    Left = 1509
+    Height = 55
+    Top = 368
+    Width = 220
+    Anchors = [akTop, akRight]
+    Caption = 'Refresh'
+    OnClick = Button2Click
+    ParentFont = False
+    TabOrder = 1
+  end
+  object Button3: TButton
+    Left = 1506
+    Height = 56
+    Top = 112
+    Width = 222
+    Anchors = [akTop, akRight]
+    Caption = 'Novo Professor'
+    OnClick = Button3Click
+    ParentFont = False
+    TabOrder = 2
+  end
+  object DBGridDep: TDBGrid
+    Left = 0
+    Height = 158
+    Top = 47
+    Width = 1437
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    AutoFillColumns = True
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSourceDep
+    ParentFont = False
+    TabOrder = 3
+  end
+  object DBGridEmp: TDBGrid
+    Left = -5
+    Height = 212
+    Top = 261
+    Width = 1437
+    AutoFillColumns = True
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSourceProf
+    ParentFont = False
+    TabOrder = 4
+  end
+  object DBGridProj: TDBGrid
+    Left = -1
+    Height = 212
+    Top = 528
+    Width = 1433
+    AutoFillColumns = True
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSourceCurso
+    ParentFont = False
+    TabOrder = 5
+  end
+  object DBGridAtrib: TDBGrid
+    Left = -6
+    Height = 200
+    Top = 798
+    Width = 1437
+    AutoFillColumns = True
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSourceAtrib
+    ParentFont = False
+    TabOrder = 6
+  end
+  object Label1: TLabel
+    Left = 681
+    Height = 30
+    Top = 9
+    Width = 159
+    Caption = 'DEPARTAMENTO'
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 676
+    Height = 30
+    Top = 224
+    Width = 113
+    Caption = 'PROFESSOR'
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 676
+    Height = 30
+    Top = 494
+    Width = 78
+    Caption = 'CURSOS'
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 680
+    Height = 30
+    Top = 761
+    Width = 124
+    Caption = 'ESTUDANTES'
+    ParentColor = False
+    ParentFont = False
+  end
+  object laRefresh: TLabel
+    Left = 1532
+    Height = 30
+    Top = 452
+    Width = 64
+    Caption = 'refresh'
+    ParentColor = False
+    ParentFont = False
+    OnClick = laRefreshClick
+  end
+  object Button4: TButton
+    Left = 1507
+    Height = 56
+    Top = 187
+    Width = 222
+    Anchors = [akTop, akRight]
+    Caption = 'Novo Curso'
+    OnClick = Button4Click
+    ParentFont = False
+    TabOrder = 7
+  end
+  object Button5: TButton
+    Left = 1508
+    Height = 56
+    Top = 261
+    Width = 222
+    Anchors = [akTop, akRight]
+    Caption = 'Novo Estudante'
+    OnClick = Button4Click
+    ParentFont = False
+    TabOrder = 8
+  end
+  object MainMenu1: TMainMenu
+    left = 1653
+    top = 443
+    object MenuItem1: TMenuItem
+      Caption = 'File'
+      object MenuItem2: TMenuItem
+        Caption = 'Sair'
+        OnClick = MenuItem2Click
+      end
+    end
+    object MenuItem11: TMenuItem
+      Caption = 'Inserir'
+      object MenuItem12: TMenuItem
+        Caption = 'Novo Departamento'
+        OnClick = MenuItem12Click
+      end
+      object MenuItem13: TMenuItem
+        Caption = 'Novo Professor'
+        OnClick = MenuItem13Click
+      end
+      object MenuItem14: TMenuItem
+        Caption = 'Novo Curso'
+        OnClick = MenuItem14Click
+      end
+    end
+    object MenuItem3: TMenuItem
+      Caption = 'Consultar'
+      OnClick = MenuItem3Click
+      object MenuItem4: TMenuItem
+        Caption = 'Inscricões de Alunos'
+        OnClick = MenuItem4Click
+      end
+    end
+  end
+  object MSSQLConnection: TMSSQLConnection
+    Connected = True
+    LoginPrompt = True
+    AfterConnect = MSSQLConnectionAfterConnect
+    DatabaseName = 'Escola'
+    KeepConnection = False
+    Password = '198721'
+    Transaction = SQLTransaction
+    UserName = 'sa'
+    HostName = 'DESKTOP-BPMFLOL\SQLEXPRESS'
+    left = 93
+    top = 128
+  end
+  object SQLTransaction: TSQLTransaction
+    Active = True
+    Database = MSSQLConnection
+    left = 317
+    top = 128
+  end
+  object SQLQueryDep: TSQLQuery
+    PacketRecords = -1
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'Depcod'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DepNome'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'ChefeID'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Active = True
+    Database = MSSQLConnection
+    Transaction = SQLTransaction
+    SQL.Strings = (
+      'select *'
+      'from Departamento'
+      'order by Depcod Asc'
+      ''
+      ''
+      ''
+    )
+    InsertSQL.Strings = (
+      ''
+    )
+    Params = <>
+    left = 504
+    top = 128
+  end
+  object DataSourceDep: TDataSource
+    DataSet = SQLQueryDep
+    OnDataChange = DataSourceDepDataChange
+    left = 672
+    top = 128
+  end
+  object SQLQueryProf: TSQLQuery
+    PacketRecords = -1
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'ProfessorID'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'Nome'
+        DataType = ftString
+        Precision = -1
+        Size = 200
+      end    
+      item
+        Name = 'Salario'
+        DataType = ftBCD
+        Precision = 10
+        Size = 2
+      end    
+      item
+        Name = 'Telefone'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'Gabinete'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'DepCod'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Active = True
+    Database = MSSQLConnection
+    Transaction = SQLTransaction
+    SQL.Strings = (
+      'select * from Professor Order by ProfessorID Asc'
+    )
+    Params = <>
+    left = 107
+    top = 373
+  end
+  object SQLQueryCurso: TSQLQuery
+    PacketRecords = -1
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'CursoID'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'DepCod'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NomeCurso'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'Horario'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'ProfessorID'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Active = True
+    Database = MSSQLConnection
+    Transaction = SQLTransaction
+    SQL.Strings = (
+      'select * from Curso Order by CursoID Asc'
+    )
+    Params = <>
+    left = 111
+    top = 640
+  end
+  object SQLQueryAtrib: TSQLQuery
+    PacketRecords = -1
+    FieldDefs = <    
+      item
+        Name = 'EmpNum'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'ProjNum'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'Funcao'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end>
+    Database = MSSQLConnection
+    Transaction = SQLTransaction
+    SQL.Strings = (
+      'select * from Atribuicao'
+    )
+    Params = <>
+    left = 112
+    top = 1017
+  end
+  object DataSourceProf: TDataSource
+    DataSet = SQLQueryProf
+    left = 266
+    top = 373
+  end
+  object DataSourceCurso: TDataSource
+    DataSet = SQLQueryCurso
+    OnDataChange = DataSourceCursoDataChange
+    left = 270
+    top = 640
+  end
+  object DataSourceAtrib: TDataSource
+    DataSet = SQLQueryAtrib
+    left = 271
+    top = 1017
+  end
+  object tmRefresh: TTimer
+    OnTimer = tmRefreshTimer
+    left = 1653
+    top = 545
+  end
+end

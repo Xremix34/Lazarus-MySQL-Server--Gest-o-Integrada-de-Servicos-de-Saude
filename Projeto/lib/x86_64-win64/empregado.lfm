@@ -1,0 +1,142 @@
+object Emp: TEmp
+  Left = 569
+  Height = 420
+  Top = 310
+  Width = 611
+  Caption = 'Novo Empregado'
+  ClientHeight = 420
+  ClientWidth = 611
+  DesignTimePPI = 168
+  OnCreate = FormCreate
+  ParentBiDiMode = False
+  LCLVersion = '2.0.0.4'
+  object Label1: TLabel
+    Left = 37
+    Height = 30
+    Top = 89
+    Width = 57
+    Caption = 'Nome'
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 37
+    Height = 30
+    Top = 145
+    Width = 62
+    Caption = 'Salario'
+    ParentColor = False
+    ParentFont = False
+    OnClick = Label2Click
+  end
+  object Label3: TLabel
+    Left = 37
+    Height = 29
+    Top = 201
+    Width = 91
+    AutoSize = False
+    Caption = 'Telefone'
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 32
+    Height = 30
+    Top = 304
+    Width = 83
+    Caption = 'Gabinete'
+    ParentColor = False
+    ParentFont = False
+    OnClick = Label4Click
+  end
+  object edNome: TEdit
+    Left = 168
+    Height = 38
+    Top = 80
+    Width = 412
+    AutoSize = False
+    ParentFont = False
+    TabOrder = 0
+  end
+  object edCategoria: TEdit
+    Left = 168
+    Height = 38
+    Top = 136
+    Width = 317
+    AutoSize = False
+    OnChange = edCategoriaChange
+    ParentFont = False
+    TabOrder = 1
+  end
+  object edTelefone: TEdit
+    Left = 168
+    Height = 38
+    Top = 192
+    Width = 255
+    AutoSize = False
+    OnChange = edTelefoneChange
+    ParentFont = False
+    TabOrder = 2
+  end
+  object ButtonInserir: TButton
+    Left = 448
+    Height = 44
+    Top = 323
+    Width = 132
+    Caption = 'Inserir'
+    ModalResult = 1
+    OnClick = ButtonInserirClick
+    ParentFont = False
+    TabOrder = 3
+  end
+  object edEmpNum: TEdit
+    Left = 168
+    Height = 38
+    Top = 24
+    Width = 159
+    ParentFont = False
+    TabOrder = 4
+  end
+  object Label5: TLabel
+    Left = 37
+    Height = 30
+    Top = 33
+    Width = 113
+    Caption = 'Professor ID'
+    ParentColor = False
+    ParentFont = False
+  end
+  object cbDepCod: TDBComboBox
+    Left = 171
+    Height = 38
+    Top = 304
+    Width = 156
+    AutoSelect = False
+    DataField = 'DepNum'
+    ItemHeight = 30
+    MaxLength = 0
+    OnChange = cbDepCodChange
+    ParentFont = False
+    TabOrder = 5
+  end
+  object edGabinete: TEdit
+    Left = 168
+    Height = 38
+    Top = 240
+    Width = 256
+    AutoSize = False
+    OnChange = edTelefoneChange
+    ParentFont = False
+    TabOrder = 6
+  end
+  object Label6: TLabel
+    Left = 37
+    Height = 29
+    Top = 248
+    Width = 91
+    AutoSize = False
+    Caption = 'Gabinete'
+    ParentColor = False
+    ParentFont = False
+  end
+end

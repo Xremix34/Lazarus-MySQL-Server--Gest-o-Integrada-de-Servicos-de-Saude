@@ -1,0 +1,134 @@
+object consultEmp: TconsultEmp
+  Left = 477
+  Height = 558
+  Top = 179
+  Width = 1048
+  Caption = 'Consultar Inscrições dos Estudantes'
+  ClientHeight = 558
+  ClientWidth = 1048
+  DesignTimePPI = 168
+  OnCreate = FormCreate
+  LCLVersion = '2.0.0.4'
+  object DBGrid1: TDBGrid
+    Left = 0
+    Height = 446
+    Top = 112
+    Width = 1050
+    AutoFillColumns = True
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSourceInscreve
+    ParentFont = False
+    TabOrder = 0
+  end
+  object inserir: TButton
+    Left = 19
+    Height = 44
+    Top = 37
+    Width = 132
+    Caption = 'Inserir'
+    OnClick = inserirClick
+    ParentFont = False
+    TabOrder = 1
+  end
+  object alterar: TButton
+    Left = 177
+    Height = 44
+    Top = 37
+    Width = 132
+    Caption = 'Alterar'
+    OnClick = alterarClick
+    ParentFont = False
+    TabOrder = 2
+  end
+  object eliminar: TButton
+    Left = 336
+    Height = 44
+    Top = 37
+    Width = 132
+    Caption = 'Eliminar'
+    OnClick = eliminarClick
+    ParentFont = False
+    TabOrder = 3
+  end
+  object Label1: TLabel
+    Left = 928
+    Height = 1
+    Top = 40
+    Width = 1
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 960
+    Height = 1
+    Top = 48
+    Width = 1
+    ParentColor = False
+  end
+  object laRefresh: TLabel
+    Left = 808
+    Height = 30
+    Top = 40
+    Width = 85
+    Caption = 'laRefresh'
+    ParentColor = False
+  end
+  object MSSQLConnection: TMSSQLConnection
+    Connected = True
+    LoginPrompt = True
+    DatabaseName = 'Escola'
+    KeepConnection = False
+    Password = '198721'
+    Transaction = SQLTransactionInscreve
+    UserName = 'sa'
+    HostName = 'DESKTOP-BPMFLOL\SQLEXPRESS'
+    left = 75
+    top = 439
+  end
+  object SQLTransactionInscreve: TSQLTransaction
+    Active = True
+    Database = MSSQLConnection
+    left = 280
+    top = 439
+  end
+  object SQLQueryInscreve: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'EstudanteID'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'CursoID'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'Classificacao'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end>
+    Active = True
+    Database = MSSQLConnection
+    Transaction = SQLTransactionInscreve
+    SQL.Strings = (
+      'select * from Inscreve'
+      'Order by CursoID Desc'
+    )
+    Params = <>
+    left = 448
+    top = 439
+  end
+  object DataSourceInscreve: TDataSource
+    DataSet = SQLQueryInscreve
+    left = 588
+    top = 439
+  end
+  object tmRefreshInscricao: TTimer
+    OnTimer = tmRefreshInscricaoTimer
+    left = 856
+    top = 32
+  end
+end

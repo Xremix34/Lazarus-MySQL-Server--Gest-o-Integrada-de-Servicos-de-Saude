@@ -1,0 +1,118 @@
+object userlogin: Tuserlogin
+  Left = 578
+  Height = 420
+  Top = 308
+  Width = 560
+  Caption = 'Login'
+  ClientHeight = 420
+  ClientWidth = 560
+  DesignTimePPI = 168
+  LCLVersion = '2.0.0.4'
+  object hostname: TEdit
+    Left = 187
+    Height = 38
+    Top = 47
+    Width = 327
+    ParentFont = False
+    TabOrder = 0
+    TextHint = 'DESKTOP-BPMFLOL\SQLEXPRESS'
+  end
+  object Label1: TLabel
+    Left = 47
+    Height = 29
+    Top = 56
+    Width = 118
+    AutoSize = False
+    Caption = 'HOST NAME'
+    ParentColor = False
+    ParentFont = False
+  end
+  object databasename: TEdit
+    Left = 243
+    Height = 38
+    Top = 121
+    Width = 271
+    OnChange = databasenameChange
+    ParentFont = False
+    TabOrder = 1
+    TextHint = 'Escola'
+  end
+  object Label2: TLabel
+    Left = 47
+    Height = 30
+    Top = 131
+    Width = 164
+    Caption = 'DATABASE NAME'
+    ParentColor = False
+    ParentFont = False
+    OnClick = Label2Click
+  end
+  object Label3: TLabel
+    Left = 47
+    Height = 30
+    Top = 196
+    Width = 109
+    Caption = 'USERNAME'
+    ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
+  end
+  object username: TEdit
+    Left = 187
+    Height = 38
+    Top = 187
+    Width = 327
+    ParentFont = False
+    TabOrder = 2
+    TextHint = 'sa'
+  end
+  object Label4: TLabel
+    Left = 47
+    Height = 30
+    Top = 261
+    Width = 111
+    Caption = 'PASSWORD'
+    ParentColor = False
+    ParentFont = False
+  end
+  object password: TEdit
+    Left = 187
+    Height = 38
+    Top = 252
+    Width = 327
+    ParentFont = False
+    TabOrder = 3
+    TextHint = '198721'
+  end
+  object btnlogin: TButton
+    Left = 224
+    Height = 44
+    Top = 336
+    Width = 132
+    Caption = 'Login'
+    ModalResult = 1
+    OnClick = btnloginClick
+    ParentFont = False
+    TabOrder = 4
+  end
+  object btncancel: TButton
+    Left = 382
+    Height = 44
+    Top = 336
+    Width = 132
+    Caption = 'Cancel'
+    ModalResult = 2
+    OnClick = btncancelClick
+    ParentFont = False
+    TabOrder = 5
+  end
+  object ip: TLabel
+    Left = 47
+    Height = 1
+    Top = 336
+    Width = 1
+    ParentColor = False
+    ParentFont = False
+    OnClick = ipClick
+  end
+end

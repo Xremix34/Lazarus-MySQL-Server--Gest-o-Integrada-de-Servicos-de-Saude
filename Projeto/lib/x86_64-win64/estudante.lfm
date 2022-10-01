@@ -1,0 +1,128 @@
+object FEstudante: TFEstudante
+  Left = 621
+  Height = 420
+  Top = 251
+  Width = 560
+  Caption = 'Nova Inscrição do Estudante'
+  ClientHeight = 420
+  ClientWidth = 560
+  DesignTimePPI = 168
+  LCLVersion = '2.0.0.4'
+  object edNomeEstudante: TEdit
+    Left = 247
+    Height = 38
+    Top = 64
+    Width = 283
+    TabOrder = 0
+  end
+  object edEndereco: TEdit
+    Left = 247
+    Height = 38
+    Top = 144
+    Width = 281
+    TabOrder = 1
+  end
+  object edEstudanteID: TEdit
+    Left = 247
+    Height = 38
+    Top = 216
+    Width = 281
+    TabOrder = 2
+  end
+  object Button1: TButton
+    Left = 400
+    Height = 44
+    Top = 328
+    Width = 131
+    Caption = 'Cancelar'
+    TabOrder = 3
+  end
+  object Button2: TButton
+    Left = 256
+    Height = 44
+    Top = 328
+    Width = 131
+    Caption = 'Inscrever'
+    ModalResult = 1
+    OnClick = Button2Click
+    TabOrder = 4
+  end
+  object Label1: TLabel
+    Left = 56
+    Height = 30
+    Top = 64
+    Width = 185
+    Caption = 'Nome do Estudante'
+    ParentColor = False
+    OnClick = Label1Click
+  end
+  object Label2: TLabel
+    Left = 56
+    Height = 30
+    Top = 144
+    Width = 110
+    Caption = 'ID do Curso'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 56
+    Height = 30
+    Top = 224
+    Width = 118
+    Caption = 'Classificação'
+    ParentColor = False
+  end
+  object SQLQueryEstudante: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'EstudanteID'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'NomeEst'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'Endereco'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end>
+    Active = True
+    Database = MSSQLConnectionEstudante
+    Transaction = SQLTransactionEstudante
+    SQL.Strings = (
+      'select * from Estudante'
+      'Order by EstudanteID Desc'
+    )
+    Params = <>
+    left = 144
+    top = 280
+  end
+  object MSSQLConnectionEstudante: TMSSQLConnection
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'Escola'
+    KeepConnection = False
+    Password = '198721'
+    Transaction = SQLTransactionEstudante
+    HostName = 'DESKTOP-BPMFLOL\SQLEXPRESS'
+    left = 48
+    top = 280
+  end
+  object SQLTransactionEstudante: TSQLTransaction
+    Active = True
+    Database = MSSQLConnectionEstudante
+    left = 272
+    top = 280
+  end
+  object DataSourceEstudante: TDataSource
+    DataSet = SQLQueryEstudante
+    left = 368
+    top = 280
+  end
+end

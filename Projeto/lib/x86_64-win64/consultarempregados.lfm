@@ -1,0 +1,122 @@
+object consultEmp: TconsultEmp
+  Left = 477
+  Height = 558
+  Top = 179
+  Width = 1048
+  Caption = 'Consultar Empregados'
+  ClientHeight = 558
+  ClientWidth = 1048
+  DesignTimePPI = 168
+  OnCreate = FormCreate
+  LCLVersion = '2.0.0.4'
+  object DBGrid1: TDBGrid
+    Left = 0
+    Height = 446
+    Top = 112
+    Width = 1050
+    AutoFillColumns = True
+    Color = clWindow
+    Columns = <>
+    DataSource = DataSourceEmp
+    ParentFont = False
+    TabOrder = 0
+  end
+  object inserir: TButton
+    Left = 19
+    Height = 44
+    Top = 37
+    Width = 132
+    Caption = 'Inserir'
+    OnClick = inserirClick
+    ParentFont = False
+    TabOrder = 1
+  end
+  object alterar: TButton
+    Left = 177
+    Height = 44
+    Top = 37
+    Width = 132
+    Caption = 'Alterar'
+    OnClick = alterarClick
+    ParentFont = False
+    TabOrder = 2
+  end
+  object eliminar: TButton
+    Left = 336
+    Height = 44
+    Top = 37
+    Width = 132
+    Caption = 'Eliminar'
+    OnClick = eliminarClick
+    ParentFont = False
+    TabOrder = 3
+  end
+  object MSSQLConnection: TMSSQLConnection
+    Connected = True
+    LoginPrompt = True
+    DatabaseName = 'DBProject'
+    KeepConnection = False
+    Password = '198721'
+    Transaction = SQLTransactionEmp
+    UserName = 'sa'
+    HostName = 'DESKTOP-BPMFLOL\SQLEXPRESS'
+    left = 75
+    top = 439
+  end
+  object SQLTransactionEmp: TSQLTransaction
+    Active = True
+    Database = MSSQLConnection
+    left = 280
+    top = 439
+  end
+  object SQLQueryEmp: TSQLQuery
+    IndexName = 'DEFAULT_ORDER'
+    FieldDefs = <    
+      item
+        Name = 'EmpNum'
+        DataType = ftInteger
+        Precision = -1
+      end    
+      item
+        Name = 'Nome'
+        DataType = ftString
+        Precision = -1
+        Size = 200
+      end    
+      item
+        Name = 'Categoria'
+        DataType = ftString
+        Precision = -1
+        Size = 120
+      end    
+      item
+        Name = 'Salario'
+        DataType = ftBCD
+        Precision = 10
+        Size = 2
+      end    
+      item
+        Name = 'DepNum'
+        DataType = ftInteger
+        Precision = -1
+      end>
+    Active = True
+    Database = MSSQLConnection
+    Transaction = SQLTransactionEmp
+    SQL.Strings = (
+      'Select * From Empregado Order by Nome Desc'
+    )
+    Params = <>
+    left = 448
+    top = 439
+  end
+  object DataSourceEmp: TDataSource
+    DataSet = SQLQueryEmp
+    left = 588
+    top = 439
+  end
+  object tmRefreshEmp: TTimer
+    left = 943
+    top = 19
+  end
+end
